@@ -160,7 +160,7 @@ public class Program {
         eq3.questionId = q3;
 
         System.out.println("Department ID: "+ d1.departmentId);
-        System.out.println(d1.departmentName);
+        System.out.println("Department Name: "+ d1.departmentName);
         System.out.println(p1.positionName);
         System.out.println(a1.fullName);
         System.out.println(g1.groupName);
