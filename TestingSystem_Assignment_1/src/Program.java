@@ -158,6 +158,7 @@ public class Program {
         ExamQuestion eq3 = new ExamQuestion();
         eq3.examId = ex3;
         eq3.questionId = q3;
+        System.out.println("Department ID: " + d1.departmentId);
         System.out.println(d1.departmentName);
         System.out.println(p1.positionName);
         System.out.println(a1.fullName);
