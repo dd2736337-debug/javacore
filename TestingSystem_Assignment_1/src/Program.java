@@ -161,16 +161,16 @@ public class Program {
 
         System.out.println("Department ID: "+ d1.departmentId);
         System.out.println("Department Name: "+ d1.departmentName);
-        System.out.println(p1.positionName);
-        System.out.println(a1.fullName);
-        System.out.println(g1.groupName);
-        System.out.println(ga1.groupId);
-        System.out.println(tq1.typeName);
-        System.out.println(cq1.categoryName);
-        System.out.println(q1.questionId);
-        System.out.println(an1.answerId);
-        System.out.println(ex1.examId);
-        System.out.println(eq1.questionId);
+        System.out.println("Position Name: " +p1.positionName);
+        System.out.println("Account Name: "+ a1.fullName);
+        System.out.println("Group Name:"+g1.groupName);
+        System.out.println("Gruop ID: "+ga1.groupId);
+        System.out.println("Type Name: "+tq1.typeName);
+        System.out.println("Category Name: "+cq1.categoryName);
+        System.out.println("Question ID: "+q1.questionId);
+        System.out.println("Answer ID: "+an1.answerId);
+        System.out.println("Exam ID: "+ex1.examId);
+        System.out.println("ExamQuestion ID: "+eq1.questionId);
 
 
     }
