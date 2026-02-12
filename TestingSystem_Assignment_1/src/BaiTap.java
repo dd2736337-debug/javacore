@@ -394,7 +394,7 @@ public class BaiTap {
             System.out.println(s.toUpperCase());
         }
     }
-    //Bài 10: Viết chương trình kiểm tra xem số nguyên dương N có thỏa mãn tính chất:
+    //Bài 21: Viết chương trình kiểm tra xem số nguyên dương N có thỏa mãn tính chất:
     // nếu ta lấy hai chữ số đầu và hai chữ số cuối của nó thì
     // sẽ tạo ra số có hai chữ số giống nhau hay không?
     public static void question_21(){
@@ -407,11 +407,53 @@ public class BaiTap {
         String dauchuoi=n.substring(0,2);
         String cuoichuoi=n.substring(n.length()-2);
         if (dauchuoi.equals(cuoichuoi)){
-            System.out.println("Thỏa mãn");
+            System.out.println("YES");
         }
         else {
-            System.out.println("không thỏa mãn");
+            System.out.println("NO");
         }
     }
+    //Bài 22: Một số kết thúc bởi hai chữ số 86 được gọi là số phát lộc.
+    // Cho một số nguyên dương không quá 500 chữ số,
+    // hãy kiểm tra số đó có phải số phát lộc hay không.
+    public static void question_22(){
+        System.out.println("Nhập vào: ");
+        String so=sc.nextLine();
+        if(so.endsWith("86")){
+            System.out.println("YES");
+        }
+        else {
+            System.out.println("NO");
+        }
 
+    }
+    //Bài 23: Viết chương trình nhập vào 3 cạnh của tam giác,
+    // kiểm tra xem đây có phải làm tam giác vuông hay không. (Áp dụng định lý pytago)
+    public static void question_23(){
+        System.out.println("nhập a: ");
+        double a=sc.nextDouble();
+        System.out.println("nhập b: ");
+        double b=sc.nextDouble();
+        System.out.println("nhập c: ");
+        double c=sc.nextDouble();
+        double max=Math.max(a,Math.max(b,c));
+        double tongbinhphuong;
+        if (max == a){
+            tongbinhphuong=b*b+c*c;
+        }
+        else if(max==b){
+            tongbinhphuong=a*a+c*c;
+        }
+        else {
+            tongbinhphuong=a*a+b*b;
+        }
+        if(tongbinhphuong ==max*max){
+            System.out.println("Tam Giác Vuông");
+        }
+        else {
+            System.out.println("Không phải tam giác vuông");
+        }
+
+
+    }
 }
