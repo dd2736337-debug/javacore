@@ -96,7 +96,8 @@ public class BaiTap {
     //Bài 6: Tạo 1 method có 2 tham số truyền vào đều có kiểu dữ liệu là int,
     // tìm bội chung nhỏ nhất của 2 số đó
     public static void question_6() {
-        System.out.println("mời nhập vào số 1: ");
+        //C1:
+    /*    System.out.println("mời nhập vào số 1: ");
         int number1 = Math.abs(sc.nextInt());
         System.out.println("mời nhập vào số 2: ");
         int number2 = Math.abs(sc.nextInt());
@@ -113,14 +114,32 @@ public class BaiTap {
             }
         }
         int bcnn = Math.abs(number1 * number2) / ucln;
-        System.out.println("bội chung nhỏ nhất là: " + bcnn);
+        System.out.println("bội chung nhỏ nhất là: " + bcnn);*/
+        //C2:
+        System.out.println("nhập vào số 1: ");
+        int number1 = Math.abs(sc.nextInt());
+        System.out.println("nhập vào số 2: ");
+        int number2 = Math.abs(sc.nextInt());
+        if (number1 == 0 || number2 == 0) {
+            System.out.println("BCNN = 0 ");
+            return;
+        }
+        int max = Math.max(number1, number2);
+        while (true) {
+            if (max % number1 == 0 && max % number2 == 0) {
+                break;
+            }
+            max++;
+        }
+        System.out.println("BCNN là: " + max);
     }
 
     //Bài 7: Tạo 1 method có 1 tham số truyền vào có kiểu dữ liệu là String,
     // kiểm tra xem chuỗi đó có phải là chuỗi đối xứng hay không?
     // (Chuỗi đối xứng là chuỗi mà khi đảo ngược các ký tự ta vẫn được chuỗi ban đầu)
     public static void question_7() {
-        System.out.println("mời nhập vào 1 chuỗi để kiểm tra: ");
+        //C1:
+       /* System.out.println("mời nhập vào 1 chuỗi để kiểm tra: ");
         String s = sc.nextLine();
         boolean check = true;
         int length = s.length();
@@ -135,6 +154,18 @@ public class BaiTap {
             System.out.println("Chuỗi đối xứng");
         } else {
             System.out.println("chuỗi không đối xứng");
+        }*/
+        C2:
+        System.out.println("Mời nhập vào chuỗi để kiểm tra: ");
+        String s = sc.nextLine();
+        String reversed = new StringBuilder(s).reverse().toString();
+        //StringBuider(s) chứa chuỗi s
+        //reverse() đảo chuỗi s
+        //toString() chuyển  StringBuilder về dạng String
+        if (s.equals(reversed)) {
+            System.out.println("Đây la chuỗi đối xứng");
+        } else {
+            System.out.println("Không phải là chuỗi đối xưng");
         }
     }
 
@@ -176,7 +207,8 @@ public class BaiTap {
 //    double đại diện cho 3 cạnh của 1 tam giác, kiểm
 //    tra xem tam giác đó có phải là tam giác vuông hay không.
     public static void question_9() {
-        System.out.println("Mời nhập vào a: ");
+        C1:
+      /*  System.out.println("Mời nhập vào a: ");
         double a = sc.nextDouble();
         System.out.println("Mời nhập vào b: ");
         double b = sc.nextDouble();
@@ -190,13 +222,36 @@ public class BaiTap {
             System.out.println("đây la tam giác vuông");
         } else {
             System.out.println("không phải tam giác vuông");
+        }*/
+        //C2:
+        System.out.println("nhập cạnh a: ");
+        double a = sc.nextDouble();
+        System.out.println("nhập cạnh b: ");
+        double b = sc.nextDouble();
+        System.out.println("nhập cạnh c: ");
+        double c = sc.nextDouble();
+        //kiểm tra điều kiện là tam giác (tổng 2 cạnh sẽ lớn hơn 1 cạnh còn lại)
+        double tongbinhphuong;
+        double max = Math.max(a, Math.max(b, c));
+        if (max == a) {
+            tongbinhphuong = b * b + c * c;
+        } else if (max == b) {
+            tongbinhphuong = a * a + c * c;
+        } else {
+            tongbinhphuong = a * a + b * b;
+        }
+        if (max * max - tongbinhphuong == 0) {
+            System.out.println("Đây là tam giác vuông");
+        } else {
+            System.out.println("Không Phải là tam giác vuông");
         }
     }
 
     //Bài 10: Tạo 1 method đầu vào là 1 số n có kiểu dữ liệu là int,
     // tổng hợp tất cả các số là thừa số nguyên tố từ 1 tới n
     public static void question_10() {
-        System.out.println("Mời nhập vào số n: ");
+        C1:
+      /*  System.out.println("Mời nhập vào số n: ");
         int n = sc.nextInt();
         int sum = 0;
         for (int i = 2; i <= n; i++) {
@@ -211,7 +266,29 @@ public class BaiTap {
                 sum += i;
             }
         }
-        System.out.println("Tổng các số nguyên tố: " + sum);
+        System.out.println("Tổng các số nguyên tố: " + sum);*/
+        //C2:
+        System.out.println("Nhập vào số: ");
+        int number = sc.nextInt();
+        int sum = 0;
+        for (int i = 2; i <= number; i++) {
+            if (isPrime(i)) {
+                sum += i;
+            }
+        }
+        System.out.println("Tổng các số nguyên tố từ 1 tới " + number + " là : " + sum);
+    }
+
+    public static boolean isPrime(int number) {
+        if (number < 2) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     //    Bài 11. Tạo 1 method có 2 tham số đầu vào là 2 số nguyên min và max,
@@ -394,66 +471,173 @@ public class BaiTap {
             System.out.println(s.toUpperCase());
         }
     }
+
     //Bài 21: Viết chương trình kiểm tra xem số nguyên dương N có thỏa mãn tính chất:
     // nếu ta lấy hai chữ số đầu và hai chữ số cuối của nó thì
     // sẽ tạo ra số có hai chữ số giống nhau hay không?
-    public static void question_21(){
+    public static void question_21() {
         System.out.println("nhập vào số N: ");
-        String n=sc.nextLine();
-        if(n.length()<4){
+        String n = sc.nextLine();
+        if (n.length() < 4) {
             System.out.println("phải có ít nhất 4 số trở lên! không hợp lệ: ");
             return;
         }
-        String dauchuoi=n.substring(0,2);
-        String cuoichuoi=n.substring(n.length()-2);
-        if (dauchuoi.equals(cuoichuoi)){
+        String dauchuoi = n.substring(0, 2);
+        String cuoichuoi = n.substring(n.length() - 2);
+        if (dauchuoi.equals(cuoichuoi)) {
             System.out.println("YES");
-        }
-        else {
+        } else {
             System.out.println("NO");
         }
     }
+
     //Bài 22: Một số kết thúc bởi hai chữ số 86 được gọi là số phát lộc.
     // Cho một số nguyên dương không quá 500 chữ số,
     // hãy kiểm tra số đó có phải số phát lộc hay không.
-    public static void question_22(){
+    public static void question_22() {
         System.out.println("Nhập vào: ");
-        String so=sc.nextLine();
-        if(so.endsWith("86")){
+        String so = sc.nextLine();
+        if (so.endsWith("86")) {
             System.out.println("YES");
-        }
-        else {
+        } else {
             System.out.println("NO");
         }
 
     }
+
     //Bài 23: Viết chương trình nhập vào 3 cạnh của tam giác,
     // kiểm tra xem đây có phải làm tam giác vuông hay không. (Áp dụng định lý pytago)
-    public static void question_23(){
+    public static void question_23() {
         System.out.println("nhập a: ");
-        double a=sc.nextDouble();
+        double a = sc.nextDouble();
         System.out.println("nhập b: ");
-        double b=sc.nextDouble();
+        double b = sc.nextDouble();
         System.out.println("nhập c: ");
-        double c=sc.nextDouble();
-        double max=Math.max(a,Math.max(b,c));
+        double c = sc.nextDouble();
+        double max = Math.max(a, Math.max(b, c));
         double tongbinhphuong;
-        if (max == a){
-            tongbinhphuong=b*b+c*c;
+        if (max == a) {
+            tongbinhphuong = b * b + c * c;
+        } else if (max == b) {
+            tongbinhphuong = a * a + c * c;
+        } else {
+            tongbinhphuong = a * a + b * b;
         }
-        else if(max==b){
-            tongbinhphuong=a*a+c*c;
-        }
-        else {
-            tongbinhphuong=a*a+b*b;
-        }
-        if(tongbinhphuong ==max*max){
+        if (tongbinhphuong == max * max) {
             System.out.println("Tam Giác Vuông");
-        }
-        else {
+        } else {
             System.out.println("Không phải tam giác vuông");
         }
+    }
 
+    //Bài 24: Viết một chương trình Java nhận vào một mảng các số nguyên
+    // và tính trung bình cộng của các số trong mảng.
+    public static void question_24() {
+      /*  C1:cho người dùng nhập vào mảng
+        System.out.println("Mời nhập số vào mảng");
+        int n=sc.nextInt();
+        if(n<=0){
+            System.out.println("Số không hợp lệ!");
+        }
+        int a[]=new int[n];
+        int sum  =0;
+        for (int i = 0; i <n ; i++) {
+            a[i]=sc.nextInt();
+            sum+=a[i];
+        }
+        double trungbinhcong=(double) sum/n;
+        System.out.println("Trung Bình Cộng= "+trungbinhcong);*/
+        int[] a = {1, 2, 7, 4};
+        int sum = 0;
+        for (int i = 0; i < a.length; i++) {
+            sum += a[i];
+        }
+        double trungbinhcong = (double) sum / a.length;
+        System.out.println("Trung bình cộng= " + trungbinhcong);
+    }
 
+    //Bài 25: Viết một chương trình Java nhận vào một chuỗi ký tự và
+    // đếm số lượng chữ cái
+    // (cả chữ viết hoa và chữ viết thường) trong chuỗi đó
+    public static void question_25() {
+        System.out.println("nhập vào chuỗi kí tự: ");
+        String s = sc.nextLine();
+        int dem = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (Character.isLetter(s.charAt(i))) {
+                dem++;
+            }
+            //s.charAt(i) → lấy ký tự ở vị trí i trong chuỗi s
+            //Character.isLetter(...) → trả về true nếu là chữ cái (a-z, A-Z, cả Unicode),
+            // ngược lại false
+        }
+        System.out.println("Số lượng là: " + dem);
+    }
+
+    //Bài 26: Viết một chương trình Java nhận vào một mảng số nguyên và
+    // tìm tất cả các số trong mảng đó chia hết cho 3. In ra các số đó.
+    public static void question_26() {
+        System.out.println("Mời nhập số vào mảng");
+        int n = sc.nextInt();
+        if (n <= 0) {
+            System.out.println("Số không hợp lệ!");
+            return;
+        }
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        System.out.println("Các số chia hết cho 3: ");
+        for (int b : a) {
+            if (b % 3 == 0) {
+                System.out.println(b + "");
+            }
+        }
+    }
+
+    //Bài 27: Viết một chương trình Java nhận vào một chuỗi ký tự và một ký tự cụ thể.
+    // Đếm và in ra số lần ký tự đó xuất hiện trong chuỗi.
+    //Ví dụ:
+    //Input: "banana", ký tự: 'a'
+    //Output: 3 (Ký tự 'a' xuất hiện 3 lần trong chuỗi "banana")
+    public static void question_27() {
+        System.out.println("Mời nhập vào chuỗi kí tự: ");
+        String s = sc.nextLine();
+        System.out.println("nhập kí tự cần đếm");
+        char c = sc.next().charAt(0);//lấy 1 kí tự
+        int dem = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == c) {
+                dem++;
+            }
+        }
+        System.out.println("Output: " + dem);
+        System.out.println("Ký tự '" + c + "' xuất hiện " + dem + " lần trong chuỗi ''" + s + "''" + "");
+    }
+    //Bài 28: Viết một chương trình Java nhận vào một chuỗi ký tự và
+    // tính tổng của tất cả các chữ số trong chuỗi đó.
+    // Các ký tự không phải chữ số sẽ bị bỏ qua.
+    public static void question_28(){
+        System.out.println("Nhập chuỗi: ");
+        String s=sc.nextLine();
+        int sum=0;
+        for (int i = 0; i <s.length() ; i++) {
+            char c=s.charAt(i);
+            if (Character.isDigit(c))//kiểm tra kí tự phải số hay không
+                sum+= c - '0';
+        }
+        System.out.println("Tổng các chữ số là: "+sum);
+    }
+    //Bài 29: Viết một chương trình Java nhận vào một mảng số nguyên
+    // và tính tổng của tất cả các số chẵn trong mảng.
+    public static void question_29(){
+        int a[]={3,8,2,7,10};
+        int sum=0;
+        for (int b:a) {
+            if(b%2 ==0){
+                sum+=b;
+            }
+        }
+        System.out.println("Tổng Số chẵn: "+sum);
     }
 }
