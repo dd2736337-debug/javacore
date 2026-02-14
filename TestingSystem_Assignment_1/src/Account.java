@@ -5,8 +5,8 @@ public class Account {
     String userName;
     String fullName;
     String email;
-    Department departmentId;
-    Position positionId;
+    Department department;                                                                                                                // lay ten doi tuong
+    Position position;
     LocalDate createDate;
 
 }
