@@ -5,9 +5,8 @@ public class Account {
     String userName;
     String fullName;
     String email;
-    Department department;
-    Position positionId;
+    Department department;                                                                                                                // lay ten doi tuong
+    PositionName position;
     LocalDate createDate;
-    Group[] groups;// ds cac group ma account nay tham gia
-
+    Group[] groups;
 }
