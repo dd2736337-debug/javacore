@@ -4,7 +4,7 @@ public class Question {
     int questionId;
     String conTent;
     CategoryQuestion category;
-    TypeQuestion typeQuestion;
+    TypeQuestion typequestion;
     Account creator;
     LocalDate createDate;
 }
