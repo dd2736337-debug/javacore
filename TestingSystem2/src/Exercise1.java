@@ -5,7 +5,7 @@ public class Exercise1 {
     //"Nhân viên này chưa có phòng ban"
     //Nếu không thì sẽ in ra text "Phòng ban của nhân viên này là …"
     public static void question_1(Account account2) {
-        if (account2 == null) {
+        if (account2.department == null) {
             System.out.println("Nhân viên này chưa có phòng ban");
         } else {
             System.out.println("Phòng ban của nhân viên này là: " + account2.department.departmentName);
@@ -22,14 +22,14 @@ public class Exercise1 {
     //Nếu có mặt trong 4 group trở lên thì sẽ in ra text
     // "Nhân viên này là người hóng chuyện, tham gia tất cả các group"
     public static void question_2(Account account2) {
-        if (account2.groups == null || account2.groups.length == 0) {
+        if (account2 == null || account2.groups == null || account2.groups.length == 0) {
             System.out.println("Nhân viên này chưa có group");
         } else if (account2.groups.length <= 2) {
             System.out.println("Group của nhân viên này là: ");
             for (Group group : account2.groups) {
                 System.out.println(group.groupName + " ");
             }
-        } else if (account2.groups.length <= 3) {
+        } else if (account2.groups.length == 3) {
             System.out.println("Nhân viên này là người quan trọng, tham gia nhiều group");
         } else {
             System.out.println("Nhân viên này là người hóng chuyện, tham gia tất cả các group");
@@ -39,7 +39,7 @@ public class Exercise1 {
     //    Question 3:
 //    Sử dụng toán tử ternary để làm Question 1
     public static void question_3(Account account2) {
-        String Check = (account2.department == null)
+        String Check = (account2.department == null || account2 == null)
                 ? "Nhân viên này chưa có phòng ban"
                 : "Phòng ban của nhân viên này là: " + account2.department.departmentName;
         System.out.println(Check);
@@ -51,10 +51,10 @@ public class Exercise1 {
     //Nếu Position = Dev thì in ra text "Đây là Developer"
     //Nếu không phải thì in ra text "Người này không phải là Developer"
     public static void question_4(Account account1) {
-        String s = (account1.position == PositionName.Dev)
+        String s = (account1.position != null && account1.position.positionName == PositionName.Dev)
                 ? "Đây là Developer" : "Người này không phải là Developer";
+        System.out.println(s);
     }
-
     //SWITCH CASE
     //Question 5:
     //Lấy ra số lượng account trong nhóm thứ 1 và in ra theo format sau:
@@ -63,8 +63,12 @@ public class Exercise1 {
     //Nếu số lượng account = 3 thì in ra "Nhóm có ba thành viên"
     //Còn lại in ra "Nhóm có nhiều thành viên
     public static void question_5(Group group1) {
-        int dem = (group1.accounts == null) ? 0 : group1.accounts.length;
-        switch (dem) {
+        if (group1==null){
+            System.out.println("Group không tồn tại!");
+            return;
+        }
+        int count = (group1.accounts == null) ? 0 : group1.accounts.length;
+        switch (count) {
             case 1:
                 System.out.println("Nhóm có một thành viên");
                 break;
@@ -82,6 +86,10 @@ public class Exercise1 {
     //Question 6:
     //Sử dụng switch case để làm lại Question 2
     public static void question_6(Account account2) {
+        if (account2 == null) {
+            System.out.println("Account không tồn tại!");
+            return;
+        }
         int count = (account2.groups == null) ? 0 : account2.groups.length;
         switch (count) {
             case 0:
@@ -104,7 +112,11 @@ public class Exercise1 {
     //Question 7:
     //Sử dụng switch case để làm lại Question 4
     public static void question_7(Account account1) {
-        switch (account1.position) {
+        if (account1==null || account1.position==null){
+            System.out.println("Account không tồn tại hoặc chưa có Position");
+            return;
+        }
+        switch (account1.position.positionName) {
             case Dev:
                 System.out.println("Đây là Developer");
                 break;
@@ -117,6 +129,9 @@ public class Exercise1 {
 //    In ra thông tin các account bao gồm: Email, FullName và tên phòng ban của họ
     public static void question_8(Account[] accounts) {
         for (Account account : accounts) {
+            if (account == null){
+                continue;
+            }
             System.out.println(account.email);
             System.out.println(account.fullName);
             if (account.department != null) {
@@ -130,10 +145,13 @@ public class Exercise1 {
     //In ra thông tin các phòng ban bao gồm: id và name
     public static void question_9(Department[] departments) {
         if (departments == null) return;
+        int i=1;
         for (Department department : departments) {
             if (department == null) continue;
+            System.out.println("Thông tin phòng ban thứ : "+i+"là: ");
             System.out.println(department.departmentId);
             System.out.println(department.departmentName);
+            i++;
         }
     }
     //For
@@ -149,15 +167,14 @@ public class Exercise1 {
     //Full name: Nguyễn Văn B
     //Phòng ban: Marketting
     public static void question_10(Account[] accounts) {
+        if (accounts==null) return;
         for (int i = 0; i < accounts.length; i++) {
-            System.out.println("Thông tin account thứ 1 là:" + (i + 1));
+            if(accounts[i]==null)continue;
+            System.out.println("Thông tin account thứ: " + (i + 1)+"là: ");
             System.out.println("Email:" + accounts[i].email);
             System.out.println("Full name:" + accounts[i].fullName);
-            System.out.println("Phòng ban:" + accounts[i].department.departmentName);
-            System.out.println("Thông tin account thứ 2 là:" + (i + 2));
-            System.out.println("Email:" + accounts[i].email);
-            System.out.println("Full name:" + accounts[i].fullName);
-            System.out.println("Phòng ban:" + accounts[i].department.departmentName);
+            String check=(accounts[i].department==null)?"Chưa có phòng ban":accounts[i].department.departmentName
+            System.out.println("Phòng ban:" + check);
         }
     }
 
@@ -170,17 +187,85 @@ public class Exercise1 {
     //	 	 	Id: 2
     //	 	 	Name: Marketing
     public static void question_11(Department[] departments) {
+        if (departments==null)return;
         for (int i = 0; i < departments.length; i++) {
-            if (departments==null) return;
-            System.out.println("Thông tin department thứ 1 là: "+(i+1));
-            System.out.println("Id: "+departments[i].departmentId);
-            System.out.println("Name: "+departments[i].departmentId);
-            System.out.println("Thông tin department thứ 2 là: "+(i+2));
-            System.out.println("Id: "+departments[i].departmentId);
-            System.out.println("Name: "+departments[i].departmentId);
+            if (departments[i] == null) continue;
+            System.out.println("Thông tin department thứ: " + (i + 1)+"là: ");
+            System.out.println("Id: " + departments[i].departmentId);
+            System.out.println("Name: " + departments[i].departmentId);
         }
     }
 
+    //Question 12:
+    //Chỉ in ra thông tin 2 department đầu tiên theo định dạng như Question 10
+    public static void question_12(Department[] departments){
+        if (departments==null) return;
+        for (int i = 0; i <=departments.length; i++) {
+            if (i == 2) break;
+            if (departments[i] == null) continue;
+            System.out.println("Thông tin department thứ " + (i + 1)+"là: ");
+            System.out.println("ID: " + departments[i].departmentId);
+            System.out.println("Name: " + departments[i].departmentName);
+        }
+    }
+    //Question 13:
+    //In ra thông tin tất cả các account ngoại trừ account thứ 2
+    public static void question_13(Account[] accounts) {
+        if (accounts==null) return;
+        for (int i = 0; i < accounts.length; i++) {
+            if (accounts[i]==null)continue;
+            if (i == 1) {
+                continue;
+            }
+            System.out.println("thông tin caccount thứ " + (i + 1)+"là: ");
+            System.out.println("Id: " + accounts[i].accountId);
+            System.out.println("UserName: " + accounts[i].userName);
+            System.out.println("FullName: " + accounts[i].fullName);
+            String check1 = (accounts[i].department == null) ? "Chưa có phòng ban" : accounts[i].department.departmentName;
+            System.out.println("Phòng ban: " + check1);
+            String check2=(accounts[i].position ==null)?"Chưa có chức vụ":accounts[i].position.positionName
+            System.out.println("Chức Vụ: " + check2);
+            String check3 = (accounts[i].groups == null) ? "Chưa có nhóm" : String.valueOf(accounts[i].groups.length);
+            System.out.println("Số Group: " + check3);
+        }
+    }
+    //Question 14:
+    //In ra thông tin tất cả các account có id < 4
+    public static void question_14(Account[] accounts) {
+        for (int i = 0; i < accounts.length; i++) {
+            if (accounts[i].accountId < 4) {
+                System.out.println("thông tin caccount là: " + (i + 1));
+                System.out.println("Id: " + accounts[i].accountId);
+                System.out.println("UserName: " + accounts[i].userName);
+                System.out.println("FullName: " + accounts[i].fullName);
+                String check = (accounts[i].department == null) ? "Chưa có phòng ban" : accounts[i].department.departmentName;
+                System.out.println("Phòng ban: " + check);
+                System.out.println("Chức Vụ: " + accounts[i].position.positionName);
+                String result = (accounts[i].groups == null) ? "Chưa có nhóm" : String.valueOf(accounts[i].groups.length);
+                System.out.println("Số Group: " + result);
+            }
+        }
+    }
 
+    //Question 15:
+    //In ra các số chẵn nhỏ hơn hoặc bằng 20
+    public static void question_15() {
+        for (int i = 0; i <= 20; i += 2) {
+            System.out.println(i);
+        }
+    }
 
+    //Question 16:
+    //Làm lại các Question ở phần FOR bằng cách sử dụng WHILE kết hợp với lệnh break, continu
+    public static void question16_10(Account[] accounts) {
+        int i = 0;
+        while (i < accounts.length) {
+            System.out.println("Thông tin account thứ 1 là: " + (i + 1));
+            System.out.println("Email: " + accounts[i].email);
+            System.out.println("Full Name: " + accounts[i].fullName);
+            String check = (accounts[i].department == null) ? "Chưa có phòng ban" : accounts[i].department.departmentName;
+            System.out.println("Phòng Ban: " + check);
+            i++;
+        }
+    }
 }

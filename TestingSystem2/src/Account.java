@@ -6,7 +6,7 @@ public class Account {
     String fullName;
     String email;
     Department department;                                                                                                                // lay ten doi tuong
-    PositionName position;
+    Position position;
     LocalDate createDate;
     Group[] groups;
 }
