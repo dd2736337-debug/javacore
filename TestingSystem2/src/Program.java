@@ -1,179 +1,61 @@
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Program {
     public static void main(String[] args) {
-        Department d1 = new Department();
-        d1.departmentId = 1;
-        d1.departmentName = "Sale";
-        Department d2 = new Department();
-        d2.departmentId = 2;
-        d2.departmentName = "Marketing";
-        Department d3 = new Department();
-        d3.departmentId = 3;
-        d3.departmentName = "IT";
-        Position p1 = new Position();
-        p1.positionId = 1;
-        p1.positionName = PositionName.Dev;
-        Position p2 = new Position();
-        p2.positionId = 2;
-        p2.positionName = PositionName.PM;
-        Position p3 = new Position();
-        p3.positionId = 3;
-        p3.positionName = PositionName.Test;
+        //Department
+        Department department1=new Department();
+        department1.departmentId=1;
+        department1.departmentName="Sale";
 
-        Account a1 = new Account();
-        a1.accountId = 1;
-        a1.email = "hung@gmail.com";
-        a1.userName = "user1";
-        a1.fullName = "Mạnh Hùng";
-        a1.department = d1;
-        a1.positionId = p1;
-        a1.createDate = LocalDate.now();
+        Department department2=new Department();
+        department2.departmentId=2;
+        department2.departmentName="Marketing";
 
-        Account account2 = new Account();
-        account2.accountId = 2;
-        account2.email = "son@gmail.com";
-        account2.userName = "user2";
-        account2.fullName = "Hồng Sơn";
-        account2.department = d2;
-        account2.positionId = p2;
-        account2.createDate = LocalDate.now();
+        Department department3=new Department();
+        department3.departmentId=3;
+        department3.departmentName="IT";
+        //Position
+        Position position1=new Position();
+        position1.positionId=1;
+        position1.positionName=PositionName.Dev;
 
-        Account a3 = new Account();
-        a3.accountId =3;
-        a3.email = "dat@gmail.com";
-        a3.userName = "user3";
-        a3.fullName = "Nguyễn Đạt";
-        a3.department = d3;
-        a3.positionId = p3;
-        a3.createDate = LocalDate.now();
+        Position position2=new Position();
+        position2.positionId=2;
+        position2.positionName=PositionName.Test;
 
+        Position position3=new Position();
+        position3.positionId=3;
+        position3.positionName=PositionName.PM;
+        //Account
+        Account account1=new Account();
+        account1.accountId=1;
+        account1.userName="userA";
+        account1.fullName="Nguyễn Văn A";
+        account1.email="NguyenVanA@gmail.com";
+        account1.department=department1;
+        account1.position=position1;
+        account1.createDate= LocalDate.now();
 
-        Group g1 = new Group();
-        g1.groupId = 1;
-        g1.groupName = "Java";
-        g1.creatorId = a1;
-        g1.createDate = LocalDate.now();
-        Group g2 = new Group();
-        g2.groupId = 2;
-        g2.groupName = "SQL";
-        g2.creatorId = account2;
-        g2.createDate = LocalDate.now();
-        Group g3 = new Group();
-        g3.groupId = 3;
-        g3.groupName = "Text";
-        g3.creatorId = a3;
-        g3.createDate = LocalDate.now();
+        Account account2=new Account();
+        account2.accountId=2;
+        account2.userName="userB";
+        account2.fullName="Nguyễn Văn B";
+        account2.email="NguyenVanB@gmail.com";
+        account2.department=department2;
+        account2.position=position2;
+        account2.createDate=LocalDate.now();
 
-        // them list group vao cho account
-        Group[] grs1 = {g1, g2};
-        account2.groups = grs1;
+        Account account3=new Account();
+        account3.accountId=3;
+        account3.userName="userC";
+        account3.fullName="Nguyễn Văn C";
+        account3.email="NguyenVanC@gmail.com";
+        account3.department=department3;
+        account3.position=position3;
+        account3.createDate=LocalDate.now();
 
-        GroupAccount ga1 = new GroupAccount();
-        ga1.groupId = g1;
-        ga1.accountId = a1;
-        ga1.joinDate = LocalDate.now();
-        GroupAccount ga2 = new GroupAccount();
-        ga2.groupId = g2;
-        ga2.accountId = account2;
-        ga2.joinDate = LocalDate.now();
-        GroupAccount ga3 = new GroupAccount();
-        ga3.groupId = g3;
-        ga3.accountId = a3;
-        ga3.joinDate = LocalDate.now();
-        TypeQuestion tq1 = new TypeQuestion();
-        tq1.typeId = 1;
-        tq1.typeName = TypeName.Essay;
-        TypeQuestion tq2 = new TypeQuestion();
-        tq2.typeId = 2;
-        tq2.typeName = TypeName.Multiple_Choice;
-        TypeQuestion tq3 = new TypeQuestion();
-        tq3.typeId = 3;
-        tq3.typeName = TypeName.Essay;
-        CategoryQuestion cq1 = new CategoryQuestion();
-        cq1.categoryId = 1;
-        cq1.categoryName = "Java";
-        CategoryQuestion cq2 = new CategoryQuestion();
-        cq2.categoryId = 2;
-        cq2.categoryName = "SQL";
-        CategoryQuestion cq3 = new CategoryQuestion();
-        cq3.categoryId = 3;
-        cq3.categoryName = "Text";
-        Question q1 = new Question();
-        q1.questionId = 1;
-        q1.conTent = "Java Là Gì";
-        q1.categoryId = cq1;
-        q1.typeId = tq1;
-        q1.creatorId = a1;
-        q1.createDate = LocalDate.now();
-        Question q2 = new Question();
-        q2.questionId = 2;
-        q2.conTent = "SQL Là Gì";
-        q2.categoryId = cq2;
-        q2.typeId = tq2;
-        q2.creatorId = account2;
-        q2.createDate = LocalDate.now();
-        Question q3 = new Question();
-        q3.questionId = 3;
-        q3.conTent = "Text Care?";
-        q3.categoryId = cq3;
-        q3.typeId = tq3;
-        q3.creatorId = a3;
-        q3.createDate = LocalDate.now();
-        Answer an1 = new Answer();
-        an1.answerId = 1;
-        an1.conTent = "Java là ngôn ngữ";
-        an1.questionId = q1;
-        an1.isCorrect = true;
-        Answer an2 = new Answer();
-        an2.answerId = 1;
-        an2.conTent = "SQL là ngôn ngữ truy vấn";
-        an2.questionId = q2;
-        an2.isCorrect = true;
-        Answer an3 = new Answer();
-        an3.answerId = 3;
-        an3.conTent = "Sai";
-        an3.questionId = q3;
-        an3.isCorrect = false;
-        Exam ex1 = new Exam();
-        ex1.examId = 1;
-        ex1.code = "E01";
-        ex1.title = "Java Basic";
-        ex1.categoryId = cq1;
-        ex1.duration = 90;
-        ex1.creatorId = a1;
-        ex1.createDate = LocalDate.now();
-        Exam ex2 = new Exam();
-        ex2.examId = 2;
-        ex2.code = "E02";
-        ex2.title = "SQL Basic";
-        ex2.categoryId = cq2;
-        ex2.duration = 90;
-        ex2.creatorId = account2;
-        ex2.createDate = LocalDate.now();
-        Exam ex3 = new Exam();
-        ex3.examId = 3;
-        ex3.code = "E03";
-        ex3.title = "Text Basic";
-        ex3.categoryId = cq3;
-        ex3.duration = 60;
-        ex3.creatorId = a3;
-        ex3.createDate = LocalDate.now();
-        ExamQuestion eq1 = new ExamQuestion();
-        eq1.examId = ex1;
-        eq1.questionId = q1;
-        ExamQuestion eq2 = new ExamQuestion();
-        eq2.examId = ex2;
-        eq2.questionId = q2;
-        ExamQuestion eq3 = new ExamQuestion();
-        eq3.examId = ex3;
-        eq3.questionId = q3;
-
-        // lam bai tap b2 o day
-        //question 1
-        Exercise1.question1(account2);
-
-
+        Exercise1.question_2(account2);
 
     }
 }
