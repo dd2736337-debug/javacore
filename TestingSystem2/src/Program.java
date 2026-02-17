@@ -86,7 +86,9 @@ public class Program {
         Account[] accounts = {account1, account2, account3};
         Department[] departments = {department1, department2, department3};
 
-        Exercise1.question_2(account2);
+        Exercise1.question17_15();
+        System.out.println();
+        Exercise1.question17_11(departments);
 
 
     }
