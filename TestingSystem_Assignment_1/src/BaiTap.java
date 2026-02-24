@@ -335,7 +335,7 @@ public class BaiTap {
         while (true) {
             System.out.println("Mời nhập vào số điện thoại");
             sodt = sc.nextLine();
-            if (sodt.length() == 10 && sodt.startsWith("0")) {
+            if (sodt.matches("^0\\d{9}$")) {
                 System.out.println("Số điện thoại hợp lệ: " + sodt);
                 break;
             }
@@ -379,22 +379,20 @@ public class BaiTap {
         }
     }
 
-    //Bài 6: Một số được gọi là số thuận nghịch độc nếu ta đọc từ trái sang phải
+    //Bài 16: Một số được gọi là số thuận nghịch độc nếu ta đọc từ trái sang phải
     // hay từ phải sang trái số đó ta vẫn nhận được một số giống nhau.
     // Hãy liệt kê tất cả các số thuận nghịch độc có sáu chữ số (Ví dụ số: 558855).
     public static void question_16() {
+        String reverse = null;
         for (int i = 100000; i <= 999999; i++) {
-            String number = String.valueOf(i);
-            String result = "";
-            for (int j = number.length() - 1; j >= 0; j--) {
-                result += number.charAt(j);
-            }
-            if (number.equals(result)) {
-                System.out.println(number);
+            String s = String.valueOf(i);
+            reverse = new StringBuilder(s).reverse().toString();
+            if (s.equals(reverse)){
+                System.out.println(i);
             }
         }
-    }
 
+    }
     //    Bài 17: Ngân hàng thông báo lãi suất là X % mỗi năm. Với số tiền gửi vào là N.
 //    Sau mỗi năm, tiền lãi sẽ được cộng dồn.
 //    Hỏi sau bao nhiêu năm thì số tiền đạt được ít nhất là M.
@@ -415,11 +413,12 @@ public class BaiTap {
         System.out.println("số năm cần để đạt được mục tiêu là: " + year);
     }
 
-    //Bài 8: Một số được xem là số may mắn nếu chỉ có các chữ số 4 và 7.
+    //Bài 18: Một số được xem là số may mắn nếu chỉ có các chữ số 4 và 7.
     // Cho số nguyên dương N không quá 200 chữ số.
     // Hãy kiểm tra xem N có phải số may mắn hay không.
     public static void question_18() {
-        System.out.println("Nhập số N: ");
+        //C1:
+    /*    System.out.println("Nhập số N: ");
         String N = sc.nextLine();
         boolean check = true;
 
@@ -433,6 +432,15 @@ public class BaiTap {
         if (check) {
             System.out.println("Đây là số may mắn");
         } else {
+            System.out.println("Không phải số may mắn");
+        }*/
+        //C2:
+        System.out.println("Nhập N: ");
+        String N=sc.nextLine();
+        if(N.matches("[47]+")){
+            System.out.println("Đây là số may mắn");
+        }
+        else {
             System.out.println("Không phải số may mắn");
         }
     }
@@ -453,7 +461,8 @@ public class BaiTap {
     //Biến đổi tất cả xâu thành chữ hoa,
     // nếu số lượng chữ cái viết hoa lớn hơn số lượng chữ cái viết thường.
     public static void question_20() {
-        System.out.println("nhập chuỗi: ");
+        //C1:
+    /*    System.out.println("nhập chuỗi: ");
         String s = sc.nextLine();
         int thuong = 0;
         int HOA = 0;
@@ -461,15 +470,26 @@ public class BaiTap {
             char c = s.charAt(i);
             if (Character.isLowerCase(c)) {
                 thuong++;
-            } else if (Character.isLowerCase(c)) {
+            } else if (Character.isUpperCase(c)) {
                 HOA++;
             }
         }
-        if (thuong > HOA) {
+        if (thuong >= HOA) {
             System.out.println(s.toLowerCase());
         } else {
             System.out.println(s.toUpperCase());
+        }*/
+        //C2:
+        System.out.println("Nhập chuỗi: ");
+        String s =sc.nextLine();
+        int thuong=s.replaceAll("[^a-z]","").length();
+        int HOA=s.replaceAll("[^A-Z]","").length();
+        if(thuong>=HOA){
+            System.out.println(s.toLowerCase());
+        }else {
+            System.out.println(s.toUpperCase());
         }
+
     }
 
     //Bài 21: Viết chương trình kiểm tra xem số nguyên dương N có thỏa mãn tính chất:
@@ -478,7 +498,7 @@ public class BaiTap {
     public static void question_21() {
         System.out.println("nhập vào số N: ");
         String n = sc.nextLine();
-        if (n.length() < 4) {
+        if (n.length() < 4||!n.matches("\\d+")) {
             System.out.println("phải có ít nhất 4 số trở lên! không hợp lệ: ");
             return;
         }
@@ -497,7 +517,7 @@ public class BaiTap {
     public static void question_22() {
         System.out.println("Nhập vào: ");
         String so = sc.nextLine();
-        if (so.endsWith("86")) {
+        if (so.matches("\\d*86")) {
             System.out.println("YES");
         } else {
             System.out.println("NO");
