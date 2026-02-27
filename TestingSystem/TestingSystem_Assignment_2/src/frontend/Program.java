@@ -1,3 +1,6 @@
+package frontend;
+import entity.*;
+
 import java.time.LocalDate;
 
 public class Program {
@@ -85,10 +88,6 @@ public class Program {
 
         Account[] accounts = {account1, account2, account3};
         Department[] departments = {department1, department2, department3};
-
-        Exercise1.question_8(accounts);
-
-
 
     }
 }

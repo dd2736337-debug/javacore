@@ -1,3 +1,5 @@
+import entity.*;
+
 import java.time.LocalDate;
 
 public class Program {
@@ -190,18 +192,9 @@ public class Program {
         examquestion3.exam=exam3 ;
         examquestion3.question = question3;
 
-        System.out.println("Department ID: " + department1.departmentId);
-        System.out.println("Department Name: " + department1.departmentName);
-        System.out.println("Position Name: " + position1.positionName);
-        System.out.println("Account Name: " + account1.fullName);
-        System.out.println("Group Name:" + group1.groupName);
-        System.out.println("Gruop ID: " + group1.groupId);
-        System.out.println("Type Name: " + typequestion1.typeName);
-        System.out.println("Category Name: " + categoryquestion1.categoryName);
-        System.out.println("Question ID: " + question3.questionId);
-        System.out.println("Answer ID: " + answer1.answerId);
-        System.out.println("Exam ID: " + exam2.examId);
-        System.out.println("ExamQuestion ID: " + question3.questionId);
+        BaiTap.question_22();
+
+
 
 
     }

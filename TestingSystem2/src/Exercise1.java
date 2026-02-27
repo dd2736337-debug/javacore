@@ -1,4 +1,5 @@
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 public class Exercise1 {
     //Question 1:
@@ -145,6 +146,7 @@ public class Exercise1 {
             if (count == 2) break;
             System.out.println("--------------");
         }
+
     }
 
     //Question 9:
@@ -579,8 +581,7 @@ public class Exercise1 {
         if (accounts == null || accounts.length == 0) return;
         int i = 0;
         int count = 0;
-        do {
-            if (i >= accounts.length) return;
+        do {if (i >= accounts.length) break;
             if (accounts[i] == null) {
                 i++;
                 continue;
@@ -600,7 +601,7 @@ public class Exercise1 {
             System.out.println("Ngày Tạo: " + accounts[i].createDate.format(formatter));
             System.out.println("---------");
             i++;
-        } while (i < accounts.length);
+        }while (i < accounts.length);
     }
 
     //In ra các số chẵn nhỏ hơn hoặc bằng 20
@@ -612,6 +613,4 @@ public class Exercise1 {
             i += 2;
         } while (i <= 20);
     }
-
-
 }
