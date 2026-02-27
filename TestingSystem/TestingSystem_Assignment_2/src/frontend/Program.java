@@ -1,10 +1,11 @@
 package frontend;
+
 import entity.*;
 
 import java.time.LocalDate;
 
 public class Program {
-    public static void main(String[] args) {
+    static void main(String[] args) {
         //Department
         Department department1 = new Department();
         department1.departmentId = 1;
@@ -34,7 +35,7 @@ public class Program {
         account1.accountId = 1;
         account1.userName = "userA";
         account1.fullName = "Nguyễn Văn A";
-        account1.email ="nguyenvanA@gmail.com";
+        account1.email = "nguyenvanA@gmail.com";
         account1.department = department1;
         account1.position = position1;
         account1.createDate = LocalDate.now();
