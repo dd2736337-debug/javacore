@@ -149,7 +149,6 @@ public class Exercise1 {
             String check = (account.department == null) ? "Chưa có phòng ban" : account.department.departmentName;
             System.out.println("Phòng Ban: " + check);
             count++;
-            if (count == 2) break;
             System.out.println("--------------");
         }
 

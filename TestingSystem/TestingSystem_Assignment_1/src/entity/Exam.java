@@ -1,6 +1,7 @@
 package entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Exam {
     public int examId;
@@ -9,5 +10,5 @@ public class Exam {
     public CategoryQuestion category;
     public int duration;
     public Account creator;
-    public LocalDate createDate;
+    public LocalDateTime createDate;
 }

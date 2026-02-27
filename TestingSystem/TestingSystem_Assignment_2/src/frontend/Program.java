@@ -2,7 +2,9 @@ package frontend;
 
 import entity.*;
 
+import java.net.Proxy;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Program {
     static void main(String[] args) {
@@ -79,6 +81,62 @@ public class Program {
         group3.creator = account3;
         group3.accounts = new Account[]{account1, account2, account3};
 
+        //CategororyQuestion
+        CategoryQuestion categoryQuestion1=new CategoryQuestion();
+        categoryQuestion1.categoryId=1;
+        categoryQuestion1.categoryName="Java";
+
+        CategoryQuestion categoryQuestion2=new CategoryQuestion();
+        categoryQuestion2.categoryId=2;
+        categoryQuestion2.categoryName="SQl";
+
+        CategoryQuestion categoryQuestion3=new CategoryQuestion();
+        categoryQuestion3.categoryId=3;
+        categoryQuestion3.categoryName="HTLM";
+
+        //TypeQuestion
+        TypeQuestion typeQuestion1=new TypeQuestion();
+        typeQuestion1.typeId=1;
+        typeQuestion1.typeName =TypeName.Essay;
+
+        TypeQuestion typeQuestion2=new TypeQuestion();
+        typeQuestion2.typeId=2;
+        typeQuestion2.typeName=TypeName.Multiple_Choice;
+
+        TypeQuestion typeQuestion3=new TypeQuestion();
+        typeQuestion3.typeId=3;
+        typeQuestion3.typeName=TypeName.Multiple_Choice;
+
+        //Exam
+        Exam exam1=new Exam();
+        exam1.examId=1;
+        exam1.code="EX01";
+        exam1.title="Java core";
+        exam1.category=categoryQuestion1;
+        exam1.duration=60;
+        exam1.creator=account1;
+        exam1.createDate= LocalDateTime.now();
+
+        Exam exam2=new Exam();
+        exam2.examId=2;
+        exam2.code="EX02";
+        exam2.title="SQl Basic";
+        exam2.category=categoryQuestion1;
+        exam2.duration=90;
+        exam2.creator=account2;
+        exam2.createDate=LocalDateTime.now();
+
+        Exam exam3=new Exam();
+        exam3.examId=3;
+        exam3.code="EX03";
+        exam3.title="Postman Test";
+        exam3.category=categoryQuestion1;
+        exam3.duration=60;
+        exam3.creator=account1;
+        exam3.createDate=LocalDateTime.now();
+
+
+
         //Gán Group cho account
         Data.account1 = account1;
         account1.groups = new Group[]{group1};
@@ -89,6 +147,9 @@ public class Program {
 
         Account[] accounts = {account1, account2, account3};
         Department[] departments = {department1, department2, department3};
+        Exam[] exams={exam1,exam2,exam3};
+
+        Exercise4.question_7();
 
     }
 }
