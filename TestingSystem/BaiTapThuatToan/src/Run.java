@@ -1,5 +1,5 @@
 public class Run {
     public static void main(String[] args) {
-        BaiTap.bai_2();
+        BaiTap.bai_29();
     }
 }
