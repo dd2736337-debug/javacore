@@ -1,6 +1,7 @@
 package entity;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Account {
     public int accountId;
@@ -11,4 +12,18 @@ public class Account {
     public Position position;
     public LocalDate createDate;
     public Group[] groups;
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accountId=" + accountId +
+                ", userName='" + userName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", department=" + department +
+                ", position=" + position +
+                ", createDate=" + createDate +
+                ", groups=" + Arrays.toString(groups) +
+                '}';
+    }
 }
