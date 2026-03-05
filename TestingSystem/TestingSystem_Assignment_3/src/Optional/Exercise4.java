@@ -90,7 +90,7 @@ public class Exercise4 {
         String ho = mang[0];
         String ten = mang[mang.length - 1];
         String tenDem = "";
-        for (int i = 1; i < mang.length; i++) {
+        for (int i = 1; i < mang.length-1; i++) {
             tenDem += mang[i] + " ";
         }
         System.out.println("Họ là: " + ho);

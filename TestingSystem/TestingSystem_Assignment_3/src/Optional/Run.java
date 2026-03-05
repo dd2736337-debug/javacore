@@ -1,12 +1,10 @@
-package frontend;
-
+package Optional;
 import entity.*;
 
-import java.net.Proxy;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Program {
+public class Run {
     public static void main(String[] args) {
         //Department
         Department department1 = new Department();
@@ -68,18 +66,21 @@ public class Program {
         group1.groupName = "Java Fresher";
         group1.creator = account1;
         group1.accounts = new Account[]{account1};
+        group1.createDate=LocalDate.now();
 
         Group group2 = new Group();
         group2.groupId = 2;
         group2.groupName = "C# Fresher";
         group2.creator = account2;
         group2.accounts = new Account[]{account2, account1};
+        group1.createDate=LocalDate.now();
 
         Group group3 = new Group();
         group3.groupId = 3;
         group3.groupName = "Python Fresher";
         group3.creator = account3;
         group3.accounts = new Account[]{account1, account2, account3};
+        group1.createDate=LocalDate.now();
 
         //CategororyQuestion
         CategoryQuestion categoryQuestion1=new CategoryQuestion();
@@ -152,8 +153,6 @@ public class Program {
 
 
 
-
-
+        Exercise5.question_6();
     }
-
 }
