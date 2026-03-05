@@ -9,10 +9,30 @@ public class Student {
 
     // Tạo constructor cho phép khi khởi tạo mỗi student thì
     // người dùng sẽ nhập vào tên, hometown và có điểm học lực = 0
-    public Student(String name, String hometown, double diemHocLuc) {
+    public Student(String name, String hometown) {
         this.name = name;
         this.hometown = hometown;
         this.diemHocLuc = 0;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getHometown() {
+        return hometown;
+    }
+
+    public double getDiemHocLuc() {
+        return diemHocLuc;
     }
 
     //Tạo 1 method cho phép set điểm vào
@@ -32,16 +52,17 @@ public class Student {
     // Demo các chức năng trên bằng class ở front-end.
     public void inThongTin() {
         String hocLuc;
-        if (diemHocLuc < 4.0) {
+        if (diemHocLuc <= 4.0) {
             hocLuc = "Yếu";
-        } else if (diemHocLuc > 4.0 && diemHocLuc < 6.0) {
+        } else if (diemHocLuc > 4.0 && diemHocLuc <= 6.0) {
             hocLuc = "Trung Bình";
-        } else if (diemHocLuc > 6.0 && diemHocLuc < 8.0) {
+        } else if (diemHocLuc > 6.0 && diemHocLuc <= 8.0) {
             hocLuc = "Khá";
         } else {
             hocLuc = "Giỏi";
         }
         System.out.println(name + "-" + diemHocLuc + "-" + hocLuc);
     }
+
 
 }
