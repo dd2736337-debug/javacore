@@ -1,24 +1,41 @@
 package com.vti.entity;
 
-import java.util.ArrayList;
-
 public class VietnamesePhone extends Phone {
-    ArrayList<String> contacts = new ArrayList<>();
-
-    @Override
-    void insertContact(String name, String phone) {
-        contacts.add(name + "-" + phone);
+    public void insertContact(String name, String phone){
+        for (int i = 0; i <size ; i++) {
+            if (contacts[i].getName().equals(name)){
+                contacts[i].setPhone(phone);
+                return;
+            }
+        }
+        contacts[size]=new Contact(name,phone);
+        size++;
     }
-
-    void removeContact(String name) {
-
+    public void removeContact(String name){
+        for (int i = 0; i <size ; i++) {
+            if (contacts[i].getName().equals(name)){
+                for (int j =i; j <size-1; j++) {
+                    contacts[j]=contacts[j+1];
+                }
+                size--;
+                return;
+            }
+        }
     }
-
-    void updateContact(String name, String newPhone) {
-
+    public void updateContact(String name,String phone){
+        for (int i = 0; i <size ; i++) {
+            if (contacts[i].getName().equals(name)){
+                contacts[i].setPhone(phone);
+                return;
+            }
+        }
     }
-
-    void searchContact(String name) {
-
+    public void searchContact(String name){
+        for (int i = 0; i <size ; i++) {
+            if (contacts[i].getName().equals(name)){
+                System.out.println("Name: "+contacts[i].getName());
+                System.out.println("Phone: "+contacts[i].getPhone());
+            }
+        }
     }
 }
