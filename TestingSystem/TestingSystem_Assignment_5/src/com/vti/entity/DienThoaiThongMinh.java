@@ -1,12 +1,12 @@
 package com.vti.entity;
 
-public class DienThoaiThongMinh extends DienThoaiDiDong{
+public class DienThoaiThongMinh extends DienThoaiDiDong {
 
-    public void suDung3G(){
+    public void suDung3G() {
         System.out.println("Sử Dụng 3G");
     }
 
-    public void chupHinh(){
+    public void chupHinh() {
         System.out.println("Chụp Hình");
     }
 

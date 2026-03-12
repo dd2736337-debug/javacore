@@ -1,6 +1,6 @@
 package com.vti.entity;
 
-public class Student  implements IStudent{
+public class Student implements IStudent {
     private int id;
     private String name;
     private int group;
@@ -16,17 +16,18 @@ public class Student  implements IStudent{
     }
 
 
-
     @Override
     public void diemDanh() {
-        System.out.println(name+" điểm danh");
+        System.out.println(name + " điểm danh");
     }
+
     @Override
     public void hocBai() {
-        System.out.println(name+" đang học bài");
+        System.out.println(name + " đang học bài");
     }
+
     @Override
     public void veSinh() {
-        System.out.println(name+"đang dọn vệ sinh");
+        System.out.println(name + "đang dọn vệ sinh");
     }
 }

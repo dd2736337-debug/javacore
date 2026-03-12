@@ -57,19 +57,21 @@ public class Excercise2 {
         System.out.println("-------------");
         System.out.println("-------------");
     }
+
     public static void question_4() {
         MyMath myMath = new MyMath();
-        System.out.println("Sum int: "+myMath.sum(1,2));
-        byte a=2;
-        byte b=3;
-        System.out.println("Sum byte: "+myMath.sum(a,b));
-        System.out.println("Sum Float: "+myMath.sum(1f,2f));
+        System.out.println("Sum int: " + myMath.sum(1, 2));
+        byte a = 2;
+        byte b = 3;
+        System.out.println("Sum byte: " + myMath.sum(a, b));
+        System.out.println("Sum Float: " + myMath.sum(1f, 2f));
 
         System.out.println("------------");
         System.out.println();
         System.out.println();
 
     }
+
     public static void question_5() {
         DienThoaiThongMinh dienThoaiThongMinh = new DienThoaiThongMinh();
         dienThoaiThongMinh.nghe();
