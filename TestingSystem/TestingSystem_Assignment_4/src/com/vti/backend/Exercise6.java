@@ -34,9 +34,9 @@ public class Exercise6 {
     //Viết hàm calculatePay() dạng abstract trả về thu nhập của nhân viên, kiểu double.
     //Viết hàm displayInfor()
     public static void question_2_3() {
-        Employee employee=new Employee("Nam",2.5);
-        Manager manager=new Manager("An",3);
-        Waiter waiter=new Waiter("Đại",1.8);
+        Employee employee = new Employee("Nam", 2.5);
+        Manager manager = new Manager("An", 3);
+        Waiter waiter = new Waiter("Đại", 1.8);
 
         employee.displayInfor();
         System.out.println("-------");

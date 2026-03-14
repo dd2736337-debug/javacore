@@ -11,18 +11,20 @@ public class Group {
     private Date createDate;
 
     //không có parameters
-    public Group(){
+    public Group() {
 
     }
+
     //Có các parameter là GroupName, Creator, array Account[] accounts, CreateDate
-    public Group(String groupName, Account creator,Account[] accounts, Date createDate) {
+    public Group(String groupName, Account creator, Account[] accounts, Date createDate) {
         this.groupName = groupName;
         this.creator = creator;
         this.accounts = accounts;
         this.createDate = createDate;
     }
+
     //Có các parameter là GroupName, Creator, array String[] usernames , CreateDate
-    public Group(String groupName, Account creator,String[] usernames, Date createDate ) {
+    public Group(String groupName, Account creator, String[] usernames, Date createDate) {
         this.groupName = groupName;
         this.creator = creator;
         this.accounts = new Account[usernames.length];

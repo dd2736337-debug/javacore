@@ -8,6 +8,7 @@ public abstract class Student1 extends Person {
         super(name);
         this.id = id;
     }
+
     public int getId() {
         return id;
     }

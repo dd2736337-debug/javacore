@@ -1,10 +1,10 @@
 package com.vti.entity;
 
 public class Student {
-    //Tất cả các property sẽ để là private để các class khác không chỉnh sửa hay nhìn thấy
-    private int id;
     private final String name;
     private final String hometown;
+    //Tất cả các property sẽ để là private để các class khác không chỉnh sửa hay nhìn thấy
+    private int id;
     private double diemHocLuc;
 
     // Tạo constructor cho phép khi khởi tạo mỗi student thì

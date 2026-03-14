@@ -1,11 +1,11 @@
 package com.vti.entity;
 
-public class HighSchoolStudent extends Student1{
-    private  String clazz;
-    private  String desiredUniversity;
+public class HighSchoolStudent extends Student1 {
+    private String clazz;
+    private String desiredUniversity;
 
-    public HighSchoolStudent(int id,String name, String clazz, String desiredUniversity) {
-        super(id,name);
+    public HighSchoolStudent(int id, String name, String clazz, String desiredUniversity) {
+        super(id, name);
         this.clazz = clazz;
         this.desiredUniversity = desiredUniversity;
     }
@@ -13,8 +13,8 @@ public class HighSchoolStudent extends Student1{
     @Override
     public String toString() {
         return "HighSchoolStudent{" +
-                "ID=" +getId() +
-                ", Name='" + getName() + '\'' +" ,"+
+                "ID=" + getId() +
+                ", Name='" + getName() + '\'' + " ," +
                 "clazz='" + clazz + '\'' +
                 ", desiredUniversity='" + desiredUniversity + '\'' +
                 '}';

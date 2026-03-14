@@ -2,6 +2,7 @@ package com.vti.backend;
 
 import com.vti.entity.*;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Exercise5 {
@@ -58,18 +59,68 @@ public class Exercise5 {
 //    Tìm kiếm tài liệu theo loại: Sách, tạp chí, báo.
 //    Thoát khỏi chương trình.
     public void question_4() {
-        QuanLySach quanLySach1 = new QuanLySach();
-        Sach sach1 = new Sach(1, "Kim Dong", 100, "NamCao", 200);
-        TapChi tapChi1 = new TapChi(2, "Tre", 50, 10, 3);
-        Bao bao = new Bao(3, "Thanh Niên", 30, "12-03-2024");
+        BookManagement bookManagement = new BookManagement();
+        while (true) {
+            System.out.println("----Menu----");
+            System.out.println("1.Thêm mới tài liệu");
+            System.out.println("2.Xóa tài liệu");
+            System.out.println("3.Hiển thị thông tin");
+            System.out.println("4.Tìm tài liệu:");
+            System.out.println("5.Thoát Chương Trình");
+            int choice = ScanerUtils.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("1.Book\n2.Magazine\n3.NewsPaper");
+                    int choice2 = ScanerUtils.nextInt();
+                    System.out.println("idDocument:");
+                    String id = ScanerUtils.nextLine();
+                    System.out.println("nameNXB:");
+                    String nameNXB = ScanerUtils.nextLine();
+                    System.out.println("soBanPhatHanh:");
+                    int soBanPhatHanh = ScanerUtils.nextInt();
+                    if (choice2 == 1) {
+                        System.out.println("Tên Tác giả:");
+                        String tenTacGia = ScanerUtils.nextLine();
+                        System.out.println("Số Trang:");
+                        int soTrang = ScanerUtils.nextInt();
+                        bookManagement.addDocument(new Book(tenTacGia, soTrang, id, nameNXB, soBanPhatHanh));
+                    } else if (choice2 == 2) {
+                        System.out.println("Số Phát Hành:");
+                        int so = ScanerUtils.nextInt();
+                        System.out.println("Tháng Phát Hành");
+                        LocalDate month = LocalDate.parse(ScanerUtils.nextLine());
+                        bookManagement.addDocument(new Magazine(so, month, id, nameNXB, soBanPhatHanh));
+                    } else if (choice2 == 3) {
+                        System.out.println("Ngày Phát Hành:");
+                        LocalDate day = LocalDate.parse(ScanerUtils.nextLine());
+                        bookManagement.addDocument(new NewsPaper(day, id, nameNXB, soBanPhatHanh));
+                    }
+                    System.out.println("Thêm Thành Công");
+                    break;
+                case 2:
+                    System.out.println("Mã Xóa:");
+                    String maXoa = ScanerUtils.nextLine();
+                    bookManagement.removeDocument(maXoa);
+                    break;
+                case 3:
+                    bookManagement.disPlay();
+                    break;
+                case 4:
+                    System.out.println("Nhập Loại tài liệu:(1.Book\n2.Magazine\n3.NewsPaper");
+                    int choice3 = ScanerUtils.nextInt();
+                    if (choice3 == 1) {
+                        bookManagement.timTheoLoai("Book");
+                    } else if (choice3 == 2) {
+                        bookManagement.timTheoLoai("Magazine");
+                    } else if (choice3 == 3) {
+                        bookManagement.timTheoLoai("NewsPaper");
+                    }
+                    break;
+                case 5:
+                    return;
 
-        quanLySach1.themTaiLieu(sach1);
-        quanLySach1.themTaiLieu(tapChi1);
-        quanLySach1.themTaiLieu(bao);
-        quanLySach1.hienThiThongTin();
-
-        System.out.println("-----Sách----");
-        quanLySach1.timSach();
+            }
+        }
     }
 
 }
