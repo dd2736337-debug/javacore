@@ -1,0 +1,16 @@
+package com.vti.frontend;
+
+import com.vti.backend.controleer.UserController;
+import com.vti.entity.User;
+
+import java.util.List;
+
+public class Function {
+    UserController userController = new UserController();
+    public void viewAllUser(){
+        System.out.println("Gọi vào back end để lấy danh sách user và hiển thị(in) ra ngoài màn hình");
+        List<User> userList=userController.viewAllUser();
+        //hiển thị kết quả ra ngoài màn hình
+        System.out.println(userList);
+    }
+}
