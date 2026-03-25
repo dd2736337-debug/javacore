@@ -19,4 +19,5 @@ public class DepartmentController {
     public List<Department> departmnetFindByName(String name){
         return departmentService.departmnetFindByName(name);
     }
+    
 }
