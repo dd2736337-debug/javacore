@@ -3,13 +3,28 @@ package com.vti.entity;
 import java.time.LocalDate;
 
 public class User {
-    private  int id;
+    private int id;
     private Role role;
-    private String username;
+    private String userName;
     private String password;
     private String email;
-    private LocalDate dob;//ngày sinh
-    private int departmentID;
+    private LocalDate dateOfBirth;
+    private Department department;
+
+    public User(int id, Role role, String userName, String password, String email, LocalDate dateOfBirth, Department department) {
+        this.id = id;
+        this.role = role;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.department = department;
+    }
+
+    public User(){
+
+    };
+
 
     public int getId() {
         return id;
@@ -27,12 +42,12 @@ public class User {
         this.role = role;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -51,19 +66,32 @@ public class User {
         this.email = email;
     }
 
-    public LocalDate getDob() {
-        return dob;
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public int getDepartmentID() {
-        return departmentID;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartmentID(int departmentID) {
-        this.departmentID = departmentID;
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", role=" + role +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", department=" + department +
+                '}';
     }
 }

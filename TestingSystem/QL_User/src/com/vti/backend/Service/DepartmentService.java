@@ -1,0 +1,46 @@
+package com.vti.backend.Service;
+
+import com.vti.backend.Repository.DepartmentRepository;
+import com.vti.backend.Repository.IDepartmentRepository;
+import com.vti.entity.Department;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DepartmentService implements IDepartmentService{
+    IDepartmentRepository departmentRepository = new DepartmentRepository();
+
+    @Override
+    public List<Department> DisplayDepartment() {
+        try {
+            return (List<Department>) departmentRepository.DisplayDepartment();
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("không tìm thấy department");
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public Department departmentfindById(int id) {
+        try {
+            return departmentRepository.departmentfindById(id);
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Không tìm thấy department");
+            return null;
+        }
+    }
+
+    @Override
+    public List<Department> departmnetFindByName(String name) {
+        try {
+            return departmentRepository.departmnetFindByName(name);
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("không tìm thấy!");
+            return new  ArrayList<>();
+        }
+    }
+
+}

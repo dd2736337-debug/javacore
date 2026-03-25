@@ -1,118 +1,65 @@
 package com.vti.frontend;
 
-import com.vti.ultils.ScanerUtils;
-
-import java.util.Scanner;
+import com.vti.ultil.ScannerUltil;
 
 public class Program {
     public static void main(String[] args) {
-        menu_login();
-
+        menu_admin();
 
     }
 
     public static void menu_login(){
-        while (true) {
-            System.out.println("------Đăng Nhập---------");
-            System.out.println("Mời bạn nhập vào UserName: ");
-            String userName = ScanerUtils.nextLine();
-            System.out.println("Mời Bạn Nhập vào password:");
-            String password = ScanerUtils.nextLine();
-
-            if ("admin".equals(userName) && "123456".equals(password)) {
+        System.out.println("-----Đăng Nhập----");
+        while (true){
+            System.out.println("Mời bạn nhập vào username: ");
+            String username= ScannerUltil.nextLine();
+            System.out.println("Mời bạn nhập vào password: ");
+            String password= ScannerUltil.nextLine();
+            if("admin".equals(username) && "123456".equals(password)){
+                menu_admin();
                 //Điều hướng sang menu của admin
-            } else if ("user".equals(userName) && "123456".equals(password)) {
+            } else if ("user".equals(username) && "123456".equals(password)) {
                 //điều hướng sang menu của user
-            } else {
-                System.err.println("User hoặc mật khẩu không chính xác.Mời nhập lại");
+            }else{
+                System.out.println("User hoặc mật khẩu không chính xác");
             }
             return;
         }
     }
-    public static void  menu_admin(){
-        while (true) {
-            System.out.println("----------- ADMIN MENU -------------");
-            System.out.println("1. Hiển thị danh sách tất cả User");
+
+    public static void menu_admin(){
+        Function function=new Function();
+        while (true){
+            System.out.println("-------ADMIN MENU---------");
+            System.out.println("1. Hiển thị danh sách tất cả User (kèm departmentName)");
             System.out.println("2. Xóa User theo Id");
-            System.out.println("3. Thay đổi mật khẩu User");
-            System.out.println("4. Thêm mới User");
-            System.out.println("5. Hiển thị danh sách Department");
+            System.out.println("3. Thay đổi mật khẩu của User");
+            System.out.println("4. Thêm mới User (password mặc định: 123456, role: USER)");
+            System.out.println("5. Hiển thị danh sách tất cả Department");
             System.out.println("6. Xóa Department theo Id");
-            System.out.println("7. Đổi tên Department");
+            System.out.println("7. Thay đổi tên Department");
             System.out.println("8. Thêm mới Department");
             System.out.println("9. Thoát");
 
-            int number = ScanerUtils.nextInt();
-
-            switch (number){
+            int choice = ScannerUltil.nextInt();
+            switch(choice){
                 case 1:
-                    // hiển thị danh sách user + departmentName
+                    function.DisplayUser();
                     break;
-
                 case 2:
-                    System.out.println("Nhập Id User cần xóa:");
-                    int userId = ScanerUtils.nextInt();
-                    // xử lý xóa user
+                    function.deteleUser();
                     break;
 
-                case 3:
-                    System.out.println("Nhập Id User:");
-                    int id = ScanerUtils.nextInt();
-                    System.out.println("Nhập mật khẩu mới:");
-                    String newPassword = ScanerUtils.nextLine();
-                    // xử lý đổi password
-                    break;
 
-                case 4:
-                    System.out.println("Nhập username:");
-                    String username = ScanerUtils.nextLine();
 
-                    System.out.println("Nhập email:");
-                    String email = ScanerUtils.nextLine();
-
-                    System.out.println("Nhập departmentId:");
-                    int depId = ScanerUtils.nextInt();
-
-                    // password mặc định 123456
-                    // role mặc định USER
-                    break;
-
-                case 5:
-                    // hiển thị danh sách department
-                    break;
-
-                case 6:
-                    System.out.println("Nhập Id department cần xóa:");
-                    int depDeleteId = ScanerUtils.nextInt();
-                    // xử lý xóa department
-                    break;
-
-                case 7:
-                    System.out.println("Nhập Id department:");
-                    int depUpdateId = ScanerUtils.nextInt();
-
-                    System.out.println("Nhập tên mới:");
-                    String newName = ScanerUtils.nextLine();
-                    // xử lý đổi tên
-                    break;
-
-                case 8:
-                    System.out.println("Nhập tên department:");
-                    String depName = ScanerUtils.nextLine();
-                    // xử lý thêm department
-                    break;
-
-                case 9:
-                    return;
             }
         }
     }
 
-
-
-
-    public static void  menu_user(){
-        while (true) {
+    public static void menu_user(){
+        Function function = new Function();
+        while (true){
+            System.out.println("-------USER MENU---------");
             System.out.println("----------- USER MENU -------------");
             System.out.println("1. Hiển thị danh sách tất cả User (kèm departmentName)");
             System.out.println("2. Tìm kiếm User theo Id");
@@ -122,50 +69,29 @@ public class Program {
             System.out.println("6. Tìm kiếm Department theo Department Name");
             System.out.println("7. Thoát");
 
-            int number =ScanerUtils.nextInt();
-
-            switch (number) {
+            int choice = ScannerUltil.nextInt();
+            switch(choice){
                 case 1:
-                    // Hiển thị danh sách tất cả User và departmentName (dạng bảng)
+                    function.DisplayUser();
                     break;
                 case 2:
-                    System.out.println("Nhập vào Id của User cần tìm:");
-                    int userId = ScanerUtils.nextInt();
-                    // xử lý tìm kiếm user theo Id
+                    function.findById();
                     break;
-
                 case 3:
-                    System.out.println("Nhập từ khoá (username hoặc email):");
-                    String keyword = ScanerUtils.nextLine();
-                    // xử lý tìm kiếm theo username hoặc email
+                    function.findByUsernameOrEmail();
                     break;
-
                 case 4:
-                    // Hiển thị danh sách tất cả Department (dạng bảng)
-
+                    function.DisplayDepartment();
                     break;
-
                 case 5:
-                    System.out.println("Nhập vào Id của Department cần tìm:");
-                    int departmentId = ScanerUtils.nextInt();
-
-                    // xử lý tìm kiếm department theo Id
-
+                    function.departmentfindById();
                     break;
-
                 case 6:
-                    System.out.println("Nhập vào tên Department cần tìm:");
-                    String departmentName =ScanerUtils.nextLine();
-
-                    // xử lý tìm kiếm department theo name
-
+                    function.departmnetFindByName();
                     break;
-
                 case 7:
-                    System.out.println("Đã thoát chương trình!");
                     return;
             }
         }
-
     }
 }
