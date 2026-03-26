@@ -10,4 +10,10 @@ public interface IDepartmentService {
     Department departmentfindById(int id);
 
     List<Department> departmnetFindByName(String name);
+
+    boolean deteleDepartment(int id);
+
+    boolean changeDepartmentName(int id, String newDepartmentname);
+
+    boolean createDepartment(int id, String name);
 }

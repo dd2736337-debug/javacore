@@ -10,6 +10,7 @@ public class User {
     private String email;
     private LocalDate dateOfBirth;
     private Department department;
+    private String fullName;
 
     public User(int id, Role role, String userName, String password, String email, LocalDate dateOfBirth, Department department) {
         this.id = id;
@@ -21,10 +22,17 @@ public class User {
         this.department = department;
     }
 
-    public User(){
+    public User() {
 
-    };
+    }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
     public int getId() {
         return id;

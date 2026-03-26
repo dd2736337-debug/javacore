@@ -13,4 +13,10 @@ public interface IUserRepository {
     List<User> findByUsernameOrEmail(String keyword) throws SQLException;
 
     boolean deteleUser(int id) throws SQLException;
+
+    boolean createUser(User user) throws SQLException;
+
+    boolean changePasswords(String email, String oldPasswords, String newPasswords) throws SQLException;
+
+
 }

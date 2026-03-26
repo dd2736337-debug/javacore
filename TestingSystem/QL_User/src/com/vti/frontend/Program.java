@@ -4,32 +4,31 @@ import com.vti.ultil.ScannerUltil;
 
 public class Program {
     public static void main(String[] args) {
-        menu_admin();
+        menu_login();
 
     }
 
-    public static void menu_login(){
+    public static void menu_login() {
         System.out.println("-----Đăng Nhập----");
-        while (true){
+        while (true) {
             System.out.println("Mời bạn nhập vào username: ");
-            String username= ScannerUltil.nextLine();
+            String username = ScannerUltil.nextLine();
             System.out.println("Mời bạn nhập vào password: ");
-            String password= ScannerUltil.nextLine();
-            if("admin".equals(username) && "123456".equals(password)){
+            String password = ScannerUltil.nextLine();
+            if ("admin".equals(username) && "123456".equals(password)) {
                 menu_admin();
                 //Điều hướng sang menu của admin
             } else if ("user".equals(username) && "123456".equals(password)) {
                 //điều hướng sang menu của user
-            }else{
+            } else {
                 System.out.println("User hoặc mật khẩu không chính xác");
             }
-            return;
         }
     }
 
-    public static void menu_admin(){
-        Function function=new Function();
-        while (true){
+    public static void menu_admin() {
+        Function function = new Function();
+        while (true) {
             System.out.println("-------ADMIN MENU---------");
             System.out.println("1. Hiển thị danh sách tất cả User (kèm departmentName)");
             System.out.println("2. Xóa User theo Id");
@@ -42,23 +41,40 @@ public class Program {
             System.out.println("9. Thoát");
 
             int choice = ScannerUltil.nextInt();
-            switch(choice){
+            switch (choice) {
                 case 1:
                     function.DisplayUser();
                     break;
                 case 2:
                     function.deteleUser();
                     break;
-
-
-
+                case 3:
+                    function.thaydoimatkhau();
+                    break;
+                case 4:
+                    function.createUser();
+                    break;
+                case 5:
+                    function.DisplayDepartment();
+                    break;
+                case 6:
+                    function.deletedepartment();
+                    break;
+                case 7:
+                    function.changeDepartmentName();
+                    break;
+                case 8:
+                    function.createDepartment();
+                    break;
+                case 9:
+                    return;
             }
         }
     }
 
-    public static void menu_user(){
+    public static void menu_user() {
         Function function = new Function();
-        while (true){
+        while (true) {
             System.out.println("-------USER MENU---------");
             System.out.println("----------- USER MENU -------------");
             System.out.println("1. Hiển thị danh sách tất cả User (kèm departmentName)");
@@ -70,7 +86,7 @@ public class Program {
             System.out.println("7. Thoát");
 
             int choice = ScannerUltil.nextInt();
-            switch(choice){
+            switch (choice) {
                 case 1:
                     function.DisplayUser();
                     break;

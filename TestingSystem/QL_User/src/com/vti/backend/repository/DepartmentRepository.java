@@ -1,14 +1,13 @@
 package com.vti.backend.Repository;
 
 import com.vti.entity.Department;
-import com.vti.entity.User;
 import com.vti.ultil.JdbcUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartmentRepository implements IDepartmentRepository  {
+public class DepartmentRepository implements IDepartmentRepository {
     public List<Department> DisplayDepartment() throws SQLException {
         Connection connection = JdbcUtils.getConnection();
         String sql = "select *\n" +
@@ -29,10 +28,10 @@ public class DepartmentRepository implements IDepartmentRepository  {
     public Department departmentfindById(int id) throws SQLException {
         Connection connection = JdbcUtils.getConnection();
         String sql = "select *\n" +
-                "from department\n"+
+                "from department\n" +
                 "where departmentid =?";
-        PreparedStatement  preparedStatement =connection.prepareStatement(sql);
-        preparedStatement.setInt(1,id);
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
         Department department = null;
         while (resultSet.next()) {
@@ -49,10 +48,10 @@ public class DepartmentRepository implements IDepartmentRepository  {
         List<Department> departmentList = new ArrayList<>();
         Connection connection = JdbcUtils.getConnection();
         String sql = "select *\n" +
-                "from department\n"+
+                "from department\n" +
                 "where departmentname like ?";
-        PreparedStatement preparedStatement =connection.prepareStatement(sql);
-        preparedStatement.setString(1,"%"+name+"%");
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, "%" + name + "%");
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             Department department = new Department();
@@ -63,4 +62,44 @@ public class DepartmentRepository implements IDepartmentRepository  {
         connection.close();
         return departmentList;
     }
+
+    @Override
+    public boolean deteleDepartment(int id) throws SQLException {
+        Connection connection = JdbcUtils.getConnection();
+        String sql = "DELETE FROM department WHERE departmentid = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        int resultSet = preparedStatement.executeUpdate();
+        return resultSet > 0;
+    }
+
+    @Override
+    public boolean changeDepartmentName(int id, String newDepartmentname) throws SQLException {
+        Connection connection = JdbcUtils.getConnection();
+        String checksql = "select*from department";
+        String updatesql = "UPDATE department SET DepartmentName = ? WHERE DepartmentID = ?";
+        PreparedStatement checkpreparedStatement = connection.prepareStatement(checksql);
+        PreparedStatement updatePreparedStatement = connection.prepareStatement(updatesql);
+        checkpreparedStatement.setInt(1, id);
+        ResultSet resultSet = checkpreparedStatement.executeQuery();
+        if (!resultSet.next()) {
+            System.out.println("Department không tồn tại!");
+            return false;
+        }
+        updatePreparedStatement.setString(1, newDepartmentname);
+        updatePreparedStatement.setInt(2, id);
+
+        return updatePreparedStatement.executeUpdate() > 0;
+    }
+
+    @Override
+    public boolean createDepartment(int id, String name) throws SQLException {
+        Connection connection = JdbcUtils.getConnection();
+        String sql = "INSERT INTO department (DepartmentID, DepartmentName) VALUES (?, ?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        preparedStatement.setString(2, name);
+        return preparedStatement.executeUpdate() > 0;
+    }
+
 }
