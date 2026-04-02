@@ -1,5 +1,10 @@
 package com.vti.ultil;
 
+import com.vti.backend.Repository.DepartmentRepository;
+import com.vti.entity.Department;
+
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 public class ScannerUltil {
@@ -38,4 +43,31 @@ public class ScannerUltil {
     public static String nextLine() {
         return sc.nextLine();
     }
+
+    public static  int inputDepartmentId() throws SQLException {
+        DepartmentRepository departmentRepository=new DepartmentRepository();
+        System.out.println("Mời bạn chọn id Department để hiện thị");
+        List<Department> list=departmentRepository.DisplayDepartment();
+        for (Department department : list){
+            System.out.println(department.getDepartmentID()+" . "+department.getDepartmentName() );
+        }
+        int departmentID=ScannerUltil.inputDepartmentId();
+        while (true){
+            boolean check=false;
+            for (Department department :list){
+                if (department.getDepartmentID()==departmentID){
+                    check=true;
+                }
+            }
+            //sau vong lặp kiểm tra  giá trị id có trong ds hay không
+            if(check){
+                break;
+            }else {
+                System.err.println("ID bạn nhập không tồng tại trong dnah sách");
+                departmentID=ScannerUltil.nextInt();
+            }
+        }
+        return departmentID;
+    }
+
 }

@@ -60,6 +60,13 @@ public class UserSevice implements IUserSevice {
         try {
             // Kiểm tra username đã tồn tại trong hệ thông chưa
             //
+            List <User> list=userRepository.findByUsernameOrEmail(user.getUserName());
+            if (list.size()>0){
+                System.out.println("Người dùng dã tồn tại trong hệ thống");
+                return false;
+            }
+            //thông tin email có tồn tazij trong hệ thông hay không
+            //deparrtmentID  có tồn tại trong hệ thống hay không
             return userRepository.createUser(user);
         } catch (Exception ex) {
             ex.printStackTrace();
