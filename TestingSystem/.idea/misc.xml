@@ -6,6 +6,8 @@
       <list>
         <option value="$PROJECT_DIR$/QL_User_Maven/pom.xml" />
         <option value="$PROJECT_DIR$/QL_HV/pom.xml" />
+        <option value="$PROJECT_DIR$/demo_maven/pom.xml" />
+        <option value="$PROJECT_DIR$/Thi_MaVen/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

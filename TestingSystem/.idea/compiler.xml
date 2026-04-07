@@ -10,6 +10,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="demo_maven" />
+        <module name="Thi_MaVen" />
         <module name="QL_HV" />
       </profile>
     </annotationProcessing>

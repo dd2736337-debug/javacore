@@ -16,6 +16,8 @@ public class UserRepository implements IUserRepository{
     @Override
     public List<User> getUserByProjectId(int projectId) {
         List<User> listUser=new ArrayList<>();
+        // tim ra ds cac idemployees trong project do
+        // dua ds tren vao cau id in ()
         String sql="Select  a.*, b.expInYear, c.projectId, c.proSkill\n" +
                 "From user a\n" +
                 "Left Join Manager b on a.id=b.user_id\n" +
