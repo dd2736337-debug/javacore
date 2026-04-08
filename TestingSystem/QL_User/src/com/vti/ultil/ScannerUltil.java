@@ -15,7 +15,7 @@ public class ScannerUltil {
             try {
                 return Integer.parseInt(sc.nextLine());
             } catch (Exception e) {
-                System.out.println("Bạn phải nhập vào một số");
+                System.out.println("Ban phai nhap vao mot so");
             }
         }
     }
@@ -25,7 +25,7 @@ public class ScannerUltil {
             try {
                 return Double.parseDouble(sc.nextLine());
             } catch (Exception e) {
-                System.out.println("Bạn phải nhập vào một số thực(double)");
+                System.out.println("Ban phai nhap vao mot so thuc (double)");
             }
         }
     }
@@ -35,7 +35,7 @@ public class ScannerUltil {
             try {
                 return Float.parseFloat(sc.nextLine());
             } catch (Exception e) {
-                System.out.println("Sai định dạng nhập lại:");
+                System.out.println("Sai dinh dang, nhap lai:");
             }
         }
     }
@@ -44,30 +44,31 @@ public class ScannerUltil {
         return sc.nextLine();
     }
 
-    public static  int inputDepartmentId() throws SQLException {
-        DepartmentRepository departmentRepository=new DepartmentRepository();
-        System.out.println("Mời bạn chọn id Department để hiện thị");
-        List<Department> list=departmentRepository.DisplayDepartment();
-        for (Department department : list){
-            System.out.println(department.getDepartmentID()+" . "+department.getDepartmentName() );
+    public static int inputDepartmentId() throws SQLException {
+        DepartmentRepository departmentRepository = new DepartmentRepository();
+        List<Department> list = departmentRepository.DisplayDepartment();
+
+        System.out.println("Moi ban chon id Department de hien thi");
+        for (Department department : list) {
+            System.out.println(department.getDepartmentID() + " . " + department.getDepartmentName());
         }
-        int departmentID=ScannerUltil.inputDepartmentId();
-        while (true){
-            boolean check=false;
-            for (Department department :list){
-                if (department.getDepartmentID()==departmentID){
-                    check=true;
+
+        while (true) {
+            int departmentID = ScannerUltil.nextInt();
+            boolean check = false;
+
+            for (Department department : list) {
+                if (department.getDepartmentID() == departmentID) {
+                    check = true;
+                    break;
                 }
             }
-            //sau vong lặp kiểm tra  giá trị id có trong ds hay không
-            if(check){
-                break;
-            }else {
-                System.err.println("ID bạn nhập không tồng tại trong dnah sách");
-                departmentID=ScannerUltil.nextInt();
-            }
-        }
-        return departmentID;
-    }
 
+            if (check) {
+                return departmentID;
+            }
+
+            System.out.println("ID ban nhap khong ton tai trong danh sach, vui long nhap lai:");
+        }
+    }
 }
