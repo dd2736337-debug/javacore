@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Thi_MaVen" />
+        <module name="File_Exam" />
         <module name="QL_HV" />
       </profile>
     </annotationProcessing>
