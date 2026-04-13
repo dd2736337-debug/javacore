@@ -15,7 +15,7 @@ import java.util.List;
 public class ProductRepository implements IProductRepository{
 
     @Override
-    public List<Product> getAll() throws SQLException {
+    public List<Product> getAll() throws SQLException {// cau 2
         List<Product> list=new ArrayList<>();
         String sql="Select a.*,b.manufacturer_name\n" +
                 "from Product a\n" +
@@ -84,5 +84,9 @@ public class ProductRepository implements IProductRepository{
         preparedStatement.setInt(5,product.getCategory().getId());
         preparedStatement.setInt(6,product.getManufacturer().getId());
         return preparedStatement.executeUpdate()>0;
+    }
+
+    public void demo() {
+    
     }
 }

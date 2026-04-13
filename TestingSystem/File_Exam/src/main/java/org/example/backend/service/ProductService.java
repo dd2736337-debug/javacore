@@ -57,11 +57,7 @@ public class ProductService implements IProductService {
                 return false;
             }
             boolean result=productRepository.addProduct(product);
-            if (result){
-                System.out.println("Thêm thành công!");
-            }else {
-                System.out.println("Thêm sản phẩm thất bại");
-            }
+
             return result;
         } catch (SQLException e){
             e.printStackTrace();

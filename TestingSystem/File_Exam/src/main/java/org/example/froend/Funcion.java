@@ -38,13 +38,13 @@ public class Funcion {
             System.out.println("Danh sách rỗng");
             return;
         }
-        System.out.println("+----------------------------------------------------------------------------------------------------------------------+");
+        System.out.println("+------------------------------------------------------------------------------------------------------------------------+");
         System.out.printf("| %-5s | %-30s | %-12s | %-30s | %-6s | %-20s |\n",
                 "ID", "NAME", "PRICE", "DESCRIPTION", "RATE", "MANUFACTURER");
-        System.out.println("+----------------------------------------------------------------------------------------------------------------------+");
-
+        System.out.println("+------------------------------------------------------------------------------------------------------------------------+");
+//' MANUFACTURER         '
         for (Product p : list) {
-            System.out.printf("| %-5d | %-30.30s | %-12.0f | %-30.30s | %-6.1f | %-20.20s |\n",
+            System.out.printf("| %-5d | %-30.30s | %-12.0f | %-30s | %-6.1f | %-20s |\n",
                     p.getId(),
                     p.getProductName(),
                     p.getPrice(),
@@ -53,11 +53,13 @@ public class Funcion {
                     p.getManufacturer().getManufacturerName());
         }
 
-        System.out.println("+----------------------------------------------------------------------------------------------------------------------+");
+        System.out.println("+------------------------------------------------------------------------------------------------------------------------+");
     }
 
     public void deleteById(){
         ProductController productController=new ProductController();
+        // check id ton tai hay ko o day
+
         System.out.println("Nhập Id cần xóa: ");
         int id=ScannerUtils.nextNonNegativeInt();
         boolean result= productController.deleteById(id);
@@ -73,6 +75,9 @@ public class Funcion {
         ProductController productController=new ProductController();
         System.out.println("Tên Sản Phẩm: ");
         String name=ScannerUtils.nextString();
+//        if (productRepository.existsByName(product.getProductName())){
+//            System.out.println("Tên sản phẩm đã tồn tại!");
+//        }
         System.out.println("Giá: ");
         double price=ScannerUtils.nextDouble();
         System.out.println("Mô tả: ");
@@ -95,7 +100,12 @@ public class Funcion {
         product.setRate(rate);
         product.setCategory(category);
         product.setManufacturer(manufacturer);
-        productController.addProduct(product);
+        boolean result = productController.addProduct(product);
+        if (result){
+            System.out.println("Thêm thành công!");
+        }else {
+            System.out.println("Thêm sản phẩm thất bại");
+        }
     }
 
     public void checkmail(){

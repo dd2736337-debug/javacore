@@ -48,7 +48,7 @@ public class Program {
         System.out.printf("| %-"+width+"s |\n", "1. Tìm nhà sản xuất theo id");
         System.out.printf("| %-"+width+"s |\n", "2. Hiển thị danh sách sản phẩm");
         System.out.printf("| %-"+width+"s |\n", "3. Xóa sản phẩm theo ID");
-        System.out.printf("| %-"+width+"s |\n", "4. Cập nhật sản phẩm");
+        System.out.printf("| %-"+width+"s |\n", "4. Thêm mới sản phẩm");
         System.out.printf("| %-"+width+"s |\n", "5. Kiểm tra Email");
         System.out.printf("| %-"+width+"s |\n", "0. Thoát");
         System.out.println(line);

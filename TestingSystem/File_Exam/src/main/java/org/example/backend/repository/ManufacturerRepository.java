@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class ManufacturerRepository implements IManufacturerRepository {
 
     @Override
-    public Manufacturer getById(int id) throws SQLException {
+    public Manufacturer getById(int id) throws SQLException {// 1
         String sql = "SELECT * FROM Manufacturer WHERE id = ?";
         Connection connection = JdbcUtils.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
