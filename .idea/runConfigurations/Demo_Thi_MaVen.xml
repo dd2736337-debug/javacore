@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Demo Thi_MaVen" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="org.example.com.vti.frontend.Demo" />
+    <module name="Student_MaVen" />
+    <shortenClasspath name="NONE" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestingSystem/Thi_MaVen" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
