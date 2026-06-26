@@ -21,7 +21,7 @@ function loadData() {
                 tableContent += "<td>" + accounts[i].fullName + "</td>";
                 tableContent += "<td>" + accounts[i].age + "</td>";
                 tableContent +=
-                    "<td><button onclick='onHandleUpdate(" +
+                    "<td><button onclick='onHandleEdit(" +
                     accounts[i].id +
                     ")'>Edit</button> <button onclick='onDelete(" +
                     accounts[i].id +
@@ -129,3 +129,40 @@ function onHandleEdit(idUpdate) {
         },
     });
 }
+
+$("#btnUpdate").click(function (e) {
+    var v_avatar = $("#inputAvatar").val();
+    var v_username = $("#inputUsername").val();
+    var v_fullname = $("#inputFullname").val();
+    var v_age = $("#inputAge").val();
+    //lấy ra đối tượng cần update
+    var accountUpdate = {
+        avatar: v_avatar,
+        username: v_username,
+        fullName: v_fullname,
+        age: v_age,
+    };
+    //Cal api update
+    $.ajax({
+        type: "PUT",
+        url:
+            "https://6a3df0780443193a1a0b390e.mockapi.io/api/v1/account/" +
+            v_idUpdate,
+        data: JSON.stringify(accountUpdate),
+        contentType: "application/json",
+        success: function (response) {
+            alert("Update dữ liệu thành công");
+            //hiển thị lại danh sách account
+            loadData();
+            v_idUpdate = -1;
+            $("#inputAvatar").val("");
+            $("#inputUsername").val("");
+            $("#inputFullname").val("");
+            $("#inputAge").val("");
+        },
+        error: function (error) {
+            //Thất bại
+            alert("Call api update thất bại");
+        },
+    });
+});
